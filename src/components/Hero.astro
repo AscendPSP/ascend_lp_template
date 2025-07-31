@@ -9,14 +9,17 @@
             <p class="cs-text">
                 We help companies develop powerful corporate social responsibility, grantmaking, and employee engagement strategies.
             </p>
-            <a href="" class="cs-button-solid">Call Us Now</a>
+            <a href="" class="cs-button-solid">
+                <picture class="cs-card-pic">
+                    <img class="cs-card-icon" aria-hidden="true" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/white-phone.svg" decoding="async" alt="icon" width="20" height="20" loading="lazy">
+                </picture>
+                Book Now: 123-456-7890
+            </a>
             <div class="cs-reviews" aria-hidden="true">
                 <div class="cs-reviews-flex">
-                    <img class="cs-reviews-img" decoding="async" fetchpriority="high" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/hero-profile1.png" alt="icon" width="48" height="48">
-                    <img class="cs-reviews-img" decoding="async" fetchpriority="high" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/hero-profile2.png" alt="icon" width="48" height="48">
-                    <img class="cs-reviews-img" decoding="async" fetchpriority="high" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/hero-profile3.png" alt="icon" width="48" height="48">
-                    <img class="cs-reviews-img" decoding="async" fetchpriority="high" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/hero-profile4.png" alt="icon" width="48" height="48">
-                    <img class="cs-reviews-img" decoding="async" fetchpriority="high" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/hero-profile5.png" alt="icon" width="48" height="48">
+                    <img class="cs-reviews-img" decoding="async" fetchpriority="high" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA7KgAjPlfSROyMKjpv-UpLsUd7z6g_gas4A&s" alt="icon" width="48" height="48">
+                    <img class="cs-reviews-img" decoding="async" fetchpriority="high" src="https://static.vecteezy.com/system/resources/previews/053/986/346/large_2x/facebook-icon-logo-symbol-free-png.png" alt="icon" width="48" height="48">
+                    <img class="cs-reviews-img" decoding="async" fetchpriority="high" src="https://www.getmailbird.com/assets/imgs/logos/clearbit/googlemail.com.png" alt="icon" width="48" height="48">
                     <span class="cs-reviews-number">+4k</span>
                 </div>
             </div>
@@ -91,7 +94,7 @@
                 </label>
                 <button class="cs-button-solid cs-submit" type="submit">Get Estimate</button>
             </form>
-            <p class="cs-disclaimer">
+            <p class="cs-disclaimer"> 
                 <img class="cs-disclaimer-icon" decoding="async" fetchpriority="high" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/lock.svg" alt="icon" width="20" height="20">
                 *Free estimates for homeowners only. Real estate evaluations are billable.
             </p>
@@ -184,20 +187,25 @@
     color: #fff;
   }
   #hero-1467 .cs-button-solid {
-    font-size: 1rem;
+    font-size: 1.2rem;
     /* 46px - 56px */
-    line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+    line-height: clamp(2.875rem, 5.5vw, 1.75rem);
     text-decoration: none;
     font-weight: 700;
     text-align: center;
     margin: 0;
     color: #fff;
     min-width: 12.5rem;
-    padding: 0 1.5rem;
+    padding-right: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 8px;
     background-color: var(--primary);
-    border-radius: 3.125rem;
+    border-radius: 0.5rem;
     overflow: hidden;
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     z-index: 1;
     /* prevents padding from adding to the width */
@@ -485,6 +493,24 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+  }
+  #hero-1467 .cs-card-pic {
+    /* 46px - 56px */
+    width: clamp(2.875rem, 6vw, 3.5rem);
+    height: clamp(2.875rem, 6vw, 3.5rem);
+    margin: -2px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    flex: none;
+  }
+  #hero-1467 .cs-card-icon {
+    width: 1.5rem;
+    height: auto;
+    display: block;
   }
 }
 /* Tablet - 768px */

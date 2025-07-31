@@ -359,6 +359,7 @@
         flex-direction: row;
         justify-content: space-between;
         gap: 3.25rem;
+        align-items: flex-start;
     }
     #contact-321 .cs-content {
         max-width: 32.625rem;
@@ -383,6 +384,10 @@
         max-width: 41.125rem;
         /* prevent flexbox from squishing it */
         flex: none;
+             /* Add sticky positioning */
+        position: -webkit-sticky;
+        position: sticky;
+        top: 160px;
     }
 }
 /* Desktop - 1300px - Parallax Effect */
