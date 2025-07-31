@@ -118,7 +118,6 @@
     /* 100px - 200px bottom */
     padding: clamp(12.5rem, 25.95vw, 12.5em) 1rem clamp(6.25rem, 7vw, 12.5rem);
     /* prevents the topper line from causing an overflow */
-    overflow: hidden;
     position: relative;
     z-index: 1;
   }
@@ -514,6 +513,8 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+    /* This allows the sticky item to have a reference */
+    align-items: flex-start;
   }
   #hero-1467 .cs-right {
     align-items: flex-start;
@@ -522,6 +523,12 @@
     margin-left: 0;
   }
   #hero-1467 .cs-content {
+    /* Make this column sticky */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 180px; /* Adjust this value to add space from the top */
+    
+    /* Existing styles */
     text-align: left;
     align-items: flex-start;
   }
