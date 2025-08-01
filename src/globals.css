@@ -1,8 +1,8 @@
 :root {
-  --primary: #ff6a3e;
-  --primaryLight: #ffba43;
-  --secondary: #ffba43;
-  --secondaryLight: #ffba43;
+  --primary: #0053b8;
+  --primaryLight: #fbfffe;
+  --secondary: #091626;
+  --secondaryLight: #f8f3ed;
   --headerColor: #1a1a1a;
   --bodyTextColor: #4e4b66;
   --bodyTextColorWhite: #fafbfc;
@@ -30,7 +30,7 @@ body {
   text-align: inherit;
   letter-spacing: 0.1em;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--secondary);
   margin-bottom: 0.25rem;
   display: block;
 }
