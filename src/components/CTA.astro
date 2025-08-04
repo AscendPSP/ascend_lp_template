@@ -356,7 +356,7 @@ const {
   }
   #services-1977 .cs-card-text {
     /* 14px - 20px */
-    font-size: clamp(0.875rem, 1.75vw, 1.25rem);
+    font-size: clamp(1.125rem, 1.75vw, 1.25rem);
     line-height: 1.5em;
     margin: 0 0 2rem 0;
     color: var(--bodyTextColor);
@@ -371,15 +371,17 @@ const {
     font-size: 1.2rem;
     font-weight: 700;
     /* 46px - 56px */
-    line-height: clamp(2.875rem, 5.5vw, 3.75rem);
+    line-height: clamp(2.875rem, 5.5vw, 1.75rem);
     text-align: center;
     text-decoration: none;
     min-width: 9.375rem;
-    margin: 0;
+    margin-top: 8px;
     /* prevents padding from adding to the width */
     box-sizing: border-box;
-    /* 16px - 32px */
-    padding: 0 clamp(1rem, 2vw, 2rem);
+    padding-right: 20px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-left: 20px;
     background-color: var(--primary);
     overflow: hidden;
     color: #fff;
@@ -410,7 +412,10 @@ const {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
+    transform: scale(1.2);
+    margin-left: 20px;
+    margin-top: 8px;
   }
   #services-1977 .cs-card-pic {
     /* 46px - 56px */
@@ -485,6 +490,15 @@ const {
     display: flex;
     flex-direction: row;
     align-items: center;
+  }
+    #services-1977 .cs-phone {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    transform: scale(1);
+    margin-left: 8px;
   }
 }
 /* Small Desktop - 1024px */
