@@ -1,43 +1,99 @@
-<!-- ============================================ -->
-<!--                  Services                    -->
-<!-- ============================================ -->
+---
+interface Props {
+  sectionId?: string;
+  topper: string;
+  title: string;
+  description: string;
 
-<section id="services-1977">
-    <div class="cs-container">
-        <div class="cs-content">
-            <span class="cs-topper">Dental Care For Everyone</span>
-            <h2 class="cs-title">Explore Our Services</h2>
-            <p class="cs-text">
-                From preventative care to restorative dentistry, our team is dedicated to providing the best possible dental care.
-            </p>
-        </div>
-        <div class="cs-card-container">
-            <picture class="cs-card-picture">
-                <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/dentist-patient.jpeg">
-                <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/dentist-patient.jpeg">
-                <img loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/dentist-patient.jpeg" alt="dentist and patient" width="477" height="478" aria-hidden="true">
-            </picture>
-            <div class="cs-card-content">
-                <h2 class="cs-h2">Book an Appointment to Get Quality Dental Services</h2>
-                <p class="cs-card-text">
-                    From preventative care to restorative dentistry, our team is dedicated to providing the best possible dental care for you.
-                </p>
-                <div class="cs-button-flex">
-                    <a class="cs-button-solid" href="">Get Started</a>
-                    <a class="cs-phone" href="">
-                        <picture class="cs-card-pic">
-                            <img class="cs-card-icon" aria-hidden="true" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/white-phone.svg" decoding="async" alt="icon" width="20" height="20" loading="lazy">
-                        </picture>
-                        <div class="cs-phone-wrapper">
-                            <span class="cs-link-content">Call Anytime</span>
-                            <span class="cs-phone-number">(+123) 456 789</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+  imageSrc: string;
+  imageAlt: string;
+  imageSrcMobile?: string;
+
+  cardTitle: string;
+  cardText: string;
+
+  primaryCtaHref: string;
+  primaryCtaText: string;
+
+  phoneHref: string;
+  phoneLabel: string;
+  phoneNumber: string;
+  phoneIconSrc: string;
+}
+
+const {
+  sectionId = "services-1977",
+  topper,
+  title,
+  description,
+  imageSrc,
+  imageAlt,
+  imageSrcMobile,
+  cardTitle,
+  cardText,
+  primaryCtaHref,
+  primaryCtaText,
+  phoneHref,
+  phoneLabel,
+  phoneNumber,
+  phoneIconSrc
+} = Astro.props;
+---
+
+<section id={sectionId}>
+  <div class="cs-container">
+    <div class="cs-content">
+      <span class="cs-topper">{topper}</span>
+      <h2 class="cs-title">{title}</h2>
+      <p class="cs-text">{description}</p>
     </div>
+
+    <div class="cs-card-container">
+      <picture class="cs-card-picture">
+        <source media="(max-width: 600px)" srcset={imageSrcMobile ?? imageSrc} />
+        <source media="(min-width: 601px)" srcset={imageSrc} />
+        <img
+          loading="lazy"
+          decoding="async"
+          src={imageSrc}
+          alt={imageAlt}
+          width="477"
+          height="478"
+          aria-hidden="true"
+        />
+      </picture>
+
+      <div class="cs-card-content">
+        <h2 class="cs-h2">{cardTitle}</h2>
+        <p class="cs-card-text">{cardText}</p>
+
+        <div class="cs-button-flex">
+          <a class="cs-button-solid" href={primaryCtaHref}>{primaryCtaText}</a>
+
+          <a class="cs-phone" href={phoneHref}>
+            <picture class="cs-card-pic">
+              <img
+                class="cs-card-icon"
+                aria-hidden="true"
+                src={phoneIconSrc}
+                decoding="async"
+                alt="icon"
+                width="20"
+                height="20"
+                loading="lazy"
+              />
+            </picture>
+            <div class="cs-phone-wrapper">
+              <span class="cs-link-content">{phoneLabel}</span>
+              <span class="cs-phone-number">{phoneNumber}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
                
 <style>
     /*-- -------------------------- -->

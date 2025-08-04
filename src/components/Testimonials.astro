@@ -1,73 +1,107 @@
-<!-- ============================================ -->
-<!--                  Reviews                     -->
-<!-- ============================================ -->
+---
+interface Testimonial {
+  profileImgSrc?: string;
+  profileImgAlt?: string;
+  name: string;
+  jobTitle: string;
+  reviewText: string;
+  starImgSrc: string;
+  starImgAlt: string;
+  dateLabel: string;
+}
 
-<section id="reviews-864">
-    <div class="cs-container">
-        <div class="cs-content">
-            <span class="cs-topper">Testimonials</span>
-            <h2 class="cs-title">Trusted by Thousand of People & Companies</h2>
-            <p class="cs-text">
-                Vitae ultricies leo integer malesuada nunc vel. Molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit. Viverra aliquet eget sit amet tellus cras adipiscing. Molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit.
-            </p>
-        </div>
-        <ul class="cs-card-group">
-            <li class="cs-item">
-                <div class="cs-flex-group">
-                    <picture class="cs-picture" aria-hidden="true">
-                        <img class="cs-profile" src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/profile2.jpg" decoding="async" alt="profile" width="50" height="50">
-                    </picture>
-                    <span class="cs-name">
-                        George Thomas
-                        <span class="cs-job">Knee Patient</span>
-                    </span>
-                </div>
-                <p class="cs-review">
-                    Curabitur vitae nunc sed velit dignissim sodales ut. Maecenas ultricies mi eget mauris pharetra et. Et ligula ullamcorper malesuada proin pellentesque diam volutpat commodo. 
-                </p>
-                <!--Stars-->
-                <img class="cs-stars" aria-hidden="true" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fstars.svg" decoding="async" alt="quote icon" width="108" height="16">
-                <span class="cs-desc">Google Review — 01/01/2025</span>
-            </li>
-            <li class="cs-item">
-                <div class="cs-flex-group">
-                    <picture class="cs-picture" aria-hidden="true">
-                        <img class="cs-profile" src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/profile2.jpg" decoding="async" alt="profile" width="50" height="50">
-                    </picture>
-                    <span class="cs-name">
-                        Barbara Titus
-                        <span class="cs-job">Knee Patient</span>
-                    </span>
-                </div>
-                <p class="cs-review">
-                    Curabitur vitae nunc sed velit dignissim sodales ut. Maecenas ultricies mi eget mauris pharetra et. Et ligula ullamcorper malesuada proin pellentesque diam volutpat commodo
-                </p>
-                <!--Stars-->
-                <img class="cs-stars" aria-hidden="true" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fstars.svg" decoding="async" alt="quote icon" width="108" height="16">
-                <span class="cs-desc">Google Review — 01/01/2025</span>
-            </li>
-            <li class="cs-item">
-                <div class="cs-flex-group">
-                    <picture class="cs-picture" aria-hidden="true">
-                        <img class="cs-profile" src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/profile2.jpg" decoding="async" alt="profile" width="50" height="50">
-                    </picture>
-                    <span class="cs-name">
-                        Barbara Titus
-                        <span class="cs-job">Knee Patient</span>
-                    </span>
-                </div>
-                <p class="cs-review">
-                    Curabitur vitae nunc sed velit dignissim sodales ut. Maecenas ultricies mi eget mauris pharetra et. Et ligula ullamcorper malesuada proin pellentesque diam volutpat commodo
-                </p>
-                <!--Stars-->
-                <img class="cs-stars" aria-hidden="true" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fstars.svg" decoding="async" alt="quote icon" width="108" height="16">
-                <span class="cs-desc">Google Review — 01/01/2025</span>
-            </li>
-        </ul>
+interface Props {
+  sectionId?: string;
+
+  topper: string;
+  title: string;
+  description: string;
+
+  testimonials: Testimonial[];
+}
+
+const {
+  sectionId = 'reviews-864',
+  topper,
+  title,
+  description,
+  testimonials
+} = Astro.props;
+
+function getInitials(name: string) {
+  return name
+    .split(' ')
+    .map((word) => word[0])
+    .slice(0, 2)
+    .join('')
+    .toUpperCase();
+}
+
+const colors = ['red', 'purple', 'green', 'blue', 'orange'];
+
+function getColor(name: string) {
+  const index = name.length % colors.length;
+  return colors[index];
+}
+
+---
+
+<section id={sectionId}>
+  <div class="cs-container">
+    <div class="cs-content">
+      <span class="cs-topper">{topper}</span>
+      <h2 class="cs-title">{title}</h2>
+      <p class="cs-text">{description}</p>
     </div>
-    <!--Top Left Quote-->
-    <!--Top Right Quote-->
+
+    <ul class="cs-card-group">
+      {testimonials.map((item) => (
+        <li class="cs-item">
+          <div class="cs-flex-group">
+            <picture class="cs-picture" aria-hidden="true">
+  {item.profileImgSrc ? (
+    <img
+      class="cs-profile"
+      src={item.profileImgSrc}
+      decoding="async"
+      alt={item.profileImgAlt}
+      width="50"
+      height="50"
+    />
+  ) : (
+    <div
+      class={`cs-initials-avatar bg-${getColor(item.name)}`}
+      aria-hidden="true"
+    >
+      {getInitials(item.name)}
+    </div>
+  )}
+</picture>
+
+            <span class="cs-name">
+              {item.name}
+              <span class="cs-job">{item.jobTitle}</span>
+            </span>
+          </div>
+
+          <p class="cs-review">{item.reviewText}</p>
+
+          <img
+            class="cs-stars"
+            aria-hidden="true"
+            src={item.starImgSrc}
+            decoding="async"
+            alt={item.starImgAlt}
+            width="108"
+            height="16"
+          />
+          <span class="cs-desc">{item.dateLabel}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
 </section>
+
                                 
 <style>
     /*-- -------------------------- -->
@@ -259,6 +293,35 @@
     #reviews-864 .cs-item:last-of-type {
         grid-column: span 4;
     }
+}
+
+.cs-initials-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.bg-red {
+  background-color: #e63946;
+}
+.bg-purple {
+  background-color: #6c5ce7;
+}
+.bg-green {
+  background-color: #00b894;
+}
+.bg-blue {
+  background-color: #0984e3;
+}
+.bg-orange {
+  background-color: #fd9644;
 }
 
                                 

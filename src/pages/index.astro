@@ -1,22 +1,249 @@
 ---
+import Navigation from "../components/Navigation.astro";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
-import About from "../components/About.astro"
-import Testimonials from "../components/Testimonials.astro"
-import CTA from "../components/CTA.astro"
-import FAQ from "../components/FAQ.astro"
-import Contact from "../components/Contact.astro"
-import Footer from "../components/Footer.astro"
+import About from "../components/About.astro";
+import Testimonials from "../components/Testimonials.astro";
+import CTA from "../components/CTA.astro";
+import FAQ from "../components/FAQ.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+
+const navItems = [
+  { label: "Home", href: "/#hero-1467", active: true },
+  { label: "About", href: "/#sbs-2376" },
+  { label: "Services", href: "/#services-1977" },
+  { label: "Testimonials", href: "/#reviews-864" },
+  { label: "Contact", href: "/#contact-321" },
+];
+
+interface Props {
+  pageTitle: string;
+}
+
+const { pageTitle } = Astro.props;
 ---
 
 <Layout pageTitle="My Landing Page">
   <main>
-    <Hero />
-    <About />
-    <CTA />
-    <Testimonials />
-    <FAQ />
-    <Contact />
-    <Footer />
+    <Navigation
+      logoHref="/"
+      logoSrc="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/day-care.svg"
+      navItems={navItems}
+      phoneHref="tel:(+123) 456 789"
+      phoneLabel="Call Anytime"
+      phoneNumber="(+123) 456 789"
+      phoneIconSrc="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/white-phone.svg"
+    />
+    <Hero
+      title="Get Clean Energy With A Solar Panel Installation"
+      description="We help companies develop powerful corporate social responsibility, grantmaking, and employee engagement strategies."
+      ctaHref="/contact"
+      ctaText="Book Now: 123-456-7890"
+      ctaIconSrc="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/white-phone.svg"
+      reviewIcons={[
+        {
+          src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA7KgAjPlfSROyMKjpv-UpLsUd7z6g_gas4A&s",
+          alt: "Review Source 1",
+        },
+        {
+          src: "https://static.vecteezy.com/system/resources/previews/053/986/346/large_2x/facebook-icon-logo-symbol-free-png.png",
+          alt: "Facebook",
+        },
+        {
+          src: "https://www.getmailbird.com/assets/imgs/logos/clearbit/googlemail.com.png",
+          alt: "Google",
+        },
+      ]}
+      reviewCount="+4k"
+      starIconSrc="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/star-single.svg"
+      ratingText="Stitch Energy rated 4.9/5 based on 359 reviews."
+      tagText="Online Special"
+      offerTitle="Get an Extra 5% OFF Your First Order Today"
+      offerExpires="*Offer Expires April 16th"
+      offerSubtext="Request a free* No-Obligation quote & expert advice from our expert team!"
+      formDisclaimer="*Free estimates for homeowners only. Real estate evaluations are billable."
+      disclaimerIconSrc="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/lock.svg"
+      backgroundImg="https://assets.doctorlogic.com/Images/Sites/A/Ascend-HeddenGunn/MasterPage/1420427.jpg"
+      backgroundImgMobile="https://assets.doctorlogic.com/Images/Sites/A/Ascend-HeddenGunn/MasterPage/1420427.jpg"
+      formAction="/lead/process"
+      formHiddenFields={{
+        SiteId: "5304",
+        FormId: "5683",
+        PageName: "landingpage",
+        PrimaryKey: "138",
+        ForeignKey: "138",
+        WebPage: "landingpage",
+        CustomerCode: "lmwtfy",
+      }}
+      formDisclaimer="We use your birthday to ensure you're eligible for certain treatments and offers."
+      disclaimerIconSrc="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/lock.svg"
+    />
+
+    <About
+      topper="Why Choose Us"
+      title="Guided Therapy Services"
+      description="We offer comprehensive support for individuals, couples, and families facing various life transitions..."
+      blocks={[
+        {
+          title: "Personal Growth Therapy",
+          description:
+            "Explore emotional healing and confidence-building through personalized therapy.",
+          listItems: [
+            {
+              iconSrc: "https://www.svgrepo.com/show/353085/dot-single.svg",
+              alt: "checkmark",
+              text: "Recognize emotional triggers and respond healthily.",
+            },
+            {
+              iconSrc: "https://www.svgrepo.com/show/353085/dot-single.svg",
+              alt: "checkmark",
+              text: "Heal past experiences through trauma-informed care.",
+            },
+            {
+              iconSrc: "https://www.svgrepo.com/show/353085/dot-single.svg",
+              alt: "checkmark",
+              text: "Build self-awareness to align with your values.",
+            },
+          ],
+          linkHref: "/contact",
+          linkText: "Book Now",
+          imageSrc:
+            "https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/people3.jpg",
+          imageAlt: "People talking",
+        },
+        // You can repeat more blocks here...
+      ]}
+    />
+
+    <CTA
+      topper="Dental Care For Everyone"
+      title="Explore Our Services"
+      description="From preventative care to restorative dentistry..."
+      imageSrc="https://assets.advancedcosmeticsurgery-sc.com/Images/Sites/A/Ascend-AdvancedCS/Aisle/30624.jpg"
+      imageAlt="Dentist and patient"
+      cardTitle="Book an Appointment to Get Quality Dental Services"
+      cardText="From preventative care to restorative dentistry, our team is dedicated to providing the best possible dental care."
+      primaryCtaHref="/contact"
+      primaryCtaText="Get Started"
+      phoneHref="tel:(+123) 456 789"
+      phoneLabel="Call Anytime"
+      phoneNumber="(+123) 456 789"
+      phoneIconSrc="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/white-phone.svg"
+    />
+
+    <Testimonials
+      topper="Testimonials"
+      title="Trusted by Thousand of People & Companies"
+      description="Vitae ultricies leo integer malesuada nunc vel. Molestie ac feugiat sed lectus vestibulum..."
+      testimonials={[
+        {
+          name: "George Thomas",
+          jobTitle: "Knee Patient",
+          reviewText:
+            "Curabitur vitae nunc sed velit dignissim sodales ut. Maecenas ultricies mi eget mauris pharetra et.",
+          starImgSrc:
+            "https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fstars.svg",
+          starImgAlt: "5-star rating",
+          dateLabel: "Google Review — 01/01/2025",
+        },
+        {
+          name: "Barbara Titus",
+          jobTitle: "Knee Patient",
+          reviewText:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          starImgSrc:
+            "https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fstars.svg",
+          starImgAlt: "5-star rating",
+          dateLabel: "Google Review — 01/01/2025",
+        },
+      ]}
+    />
+
+    <FAQ
+      imageSrc="https://assets.tlhplasticsurgery.com/Images/Sites/A/Ascend-TallahasseePlasticSurgery/Procedure/1466153.png"
+      imageSrcMobile="https://assets.tlhplasticsurgery.com/Images/Sites/A/Ascend-TallahasseePlasticSurgery/Procedure/1466153.png"
+      imageAlt="Kitchen"
+      topper="Asked questions"
+      title="Frequently Asked Questions"
+      faqItems={[
+        {
+          question: "How much are house painting services?",
+          answer: "Some cleaning plans require a minimum commitment term...",
+          isActive: true,
+        },
+        {
+          question: "What is your plan cancellation policy?",
+          answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        },
+        {
+          question: "How long should a house painting take?",
+          answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        },
+      ]}
+    />
+
+    <Contact
+      topper="Contact Us"
+      title="We Are Always Ready To Hear For You."
+      formAction="/lead/process"
+      submitButtonText="Make an Appointment"
+      formHiddenFields={{
+        SiteId: "5304",
+        FormId: "5683",
+        PageName: "landingpage",
+        PrimaryKey: "138",
+        ForeignKey: "138",
+        WebPage: "landingpage",
+        CustomerCode: "lmwtfy",
+      }}
+      contactDetails={[
+        {
+          iconSrc:
+            "https://csimg.nyc3.digitaloceanspaces.com/Contact-Page/phone-gold.svg",
+          label: "Phone",
+          lines: ["(555) 456 7899", "(555) 456 7898"],
+          hrefs: ["tel:555-456 7899", "tel:555-456 7898"],
+        },
+        {
+          iconSrc:
+            "https://csimg.nyc3.digitaloceanspaces.com/Contact-Page/pin-gold.svg",
+          label: "Address",
+          lines: ["121 Fake St, Melbourne\nVIC 300, Australia"],
+          hrefs: [""],
+        },
+        {
+          iconSrc:
+            "https://csimg.nyc3.digitaloceanspaces.com/Contact-Page/clock-gold.svg",
+          label: "Our Hours",
+          lines: ["Monday To Saturday", "9:00 AM - 10:30 PM"],
+        },
+      ]}
+      mapImageSrc="https://csimg.nyc3.digitaloceanspaces.com/Contact-Page/map.png"
+      mapImageAlt="Map"
+      backgroundImageSrc="https://assets.advancedcosmeticsurgery-sc.com/Images/Sites/A/Ascend-AdvancedCS/Aisle/30625.jpg"
+      backgroundImageSrcMobile="https://assets.advancedcosmeticsurgery-sc.com/Images/Sites/A/Ascend-AdvancedCS/Aisle/30625.jpg"
+      backgroundImageAlt="Round Table"
+    />
+
+    <Footer
+      logoHref="/"
+      logoSrc="https://csimg.nyc3.cdn.digitaloceanspaces.com/Logos/agency-logo-dark.svg"
+      logoAlt="Stitch Logo"
+      navItems={[
+        { label: "Home", href: "/#hero-1467" },
+        { label: "About", href: "/#sbs-2376" },
+        { label: "Services", href: "/#services-1977" },
+        { label: "Testimonials", href: "/#reviews-864" },
+        { label: "Contact", href: "/#contact-321" },
+      ]}
+      copyrightText="2023"
+      agencyHref="/"
+      agencyName="Stitch Agency"
+      privacyPolicyHref="/privacy-policy"
+      privacyPolicyLabel="Privacy Policy"
+      termsHref="/terms"
+      termsLabel="Terms of Use"
+    />
   </main>
 </Layout>

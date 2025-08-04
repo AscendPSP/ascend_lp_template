@@ -1,6 +1,5 @@
 ---
-import '../globals.css'
-import Navigation from "../components/Navigation.astro";
+import "../globals.css";
 
 interface Props {
   pageTitle: string;
@@ -17,7 +16,6 @@ const { pageTitle } = Astro.props;
     <title>{pageTitle}</title>
   </head>
   <body>
-    <Navigation />
     <slot />
   </body>
 </html>

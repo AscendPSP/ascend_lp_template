@@ -1,43 +1,88 @@
-<!-- ============================================ -->
-<!--                  Footer                      -->
-<!-- ============================================ -->
+---
+interface NavItem {
+  label: string;
+  href: string;
+}
 
-<footer id="footer-1391">
-    <div class="cs-container">
-        <div class="cs-top">
-            <a aria-label="go back to home" class="cs-logo" href="">
-                <img class="cs-logo-img" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Logos/agency-logo-dark.svg" alt="logo" width="209" height="40">
-            </a>
-            <ul class="cs-ul">
-                <li class="cs-li">
-                    <a href="/#hero-1467" class="cs-link">Home</a>
-                </li>
-                <li class="cs-li">
-                    <a href="/#sbs-2376" class="cs-link">About</a>
-                </li>
-                <li class="cs-li">
-                    <a href="/#services-1977" class="cs-link">Services</a>
-                </li>
-                <li class="cs-li">
-                    <a href="/#reviews-864" class="cs-link">Testimonials</a>
-                </li>
-                <li class="cs-li">
-                    <a href="/#contact-321" class="cs-link">Contact</a>
-                </li>
-            </ul>
-        </div>
-        <div class="cs-bottom">
-            <span class="cs-copyright">
-                © Copyright 2023 - <a href="" class="cs-copyright-link">Stitch Agency</a>
-            </span>
-            <div class="cs-flex">
-                <a href="" class="cs-copyright-link">Privacy Policy</a>
-                <span class="cs-separater">|</span>
-                <a href="" class="cs-copyright-link">Terms of Use</a>
-            </div>
-        </div>
+interface FooterProps {
+  sectionId?: string;
+
+  logoHref: string;
+  logoSrc: string;
+  logoAlt: string;
+
+  navItems: NavItem[];
+
+  copyrightText: string;
+  agencyHref: string;
+  agencyName: string;
+
+  privacyPolicyHref: string;
+  privacyPolicyLabel: string;
+
+  termsHref: string;
+  termsLabel: string;
+}
+
+const {
+  sectionId = "footer-1391",
+  logoHref,
+  logoSrc,
+  logoAlt,
+  navItems,
+  copyrightText,
+  agencyHref,
+  agencyName,
+  privacyPolicyHref,
+  privacyPolicyLabel,
+  termsHref,
+  termsLabel
+} = Astro.props;
+---
+
+<footer id={sectionId}>
+  <div class="cs-container">
+    <div class="cs-top">
+      <a aria-label="go back to home" class="cs-logo" href={logoHref}>
+        <img
+          class="cs-logo-img"
+          loading="lazy"
+          decoding="async"
+          src={logoSrc}
+          alt={logoAlt}
+          width="209"
+          height="40"
+        />
+      </a>
+
+      <ul class="cs-ul">
+        {navItems.map((item: any) => (
+          <li class="cs-li">
+            <a href={item.href} class="cs-link">{item.label}</a>
+          </li>
+        ))}
+      </ul>
     </div>
+
+    <div class="cs-bottom">
+      <span class="cs-copyright">
+        © {copyrightText} - 
+        <a href={agencyHref} class="cs-copyright-link">{agencyName}</a>
+      </span>
+
+      <div class="cs-flex">
+        <a href={privacyPolicyHref} class="cs-copyright-link">
+          {privacyPolicyLabel}
+        </a>
+        <span class="cs-separater">|</span>
+        <a href={termsHref} class="cs-copyright-link">
+          {termsLabel}
+        </a>
+      </div>
+    </div>
+  </div>
 </footer>
+
                                 
 <style>
     /*-- -------------------------- -->
