@@ -24,6 +24,7 @@ interface HeroProps {
   formAction?: string;
   formDisclaimer: string;
   formHiddenFields?: Record<string, string>;
+  procedureOptions?: string[];
   disclaimerIconSrc: string;
 
   backgroundImg: string;
@@ -50,6 +51,7 @@ const {
   backgroundImg,
   backgroundImgMobile,
   formHiddenFields,
+  procedureOptions,
 } = Astro.props;
 ---
 
@@ -223,18 +225,12 @@ const {
 
         <label class="cs-label">
           Procedure
-          <select
-            class="cs-input"
-            id="field-41680"
-            name="ProcedureList"
-            required
-          >
-            <option value="">Select a Procedure</option>
-            <option value="Acne Scar Treatment">Acne Scar Treatment</option>
-            <option value="Tummy Tuck">Tummy Tuck</option>
-            <option value="Facelift">Facelift</option>
-            <!-- Add more as needed -->
-          </select>
+          <select class="cs-input" id="field-41680" name="ProcedureList" required>
+  <option value="">Select a Procedure</option>
+  {(procedureOptions ?? []).map((option: string) => (
+  <option value={option}>{option}</option>
+))}
+</select>
         </label>
 
         <label class="cs-label cs-message">
