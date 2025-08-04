@@ -3,7 +3,7 @@ interface ContactDetail {
   iconSrc: string;
   label: string;
   lines: string[];
-  hrefs?: string[]; // Optional, if you want links (like phone numbers or addresses)
+  hrefs?: string[];
 }
 
 interface Props {
@@ -13,15 +13,16 @@ interface Props {
   title: string;
 
   formAction?: string;
-  formHiddenFields?: Record<string, string>; // <-- added
-  procedureOptions?: string[];
   submitButtonText: string;
+  formHiddenFields?: Record<string, string>;
+  procedureOptions?: string[];
 
   contactDetails: ContactDetail[];
 
   mapImageSrc: string;
   mapImageSrcMobile?: string;
   mapImageAlt: string;
+  mapEmbedUrl?: string;
 
   backgroundImageSrc: string;
   backgroundImageSrcMobile?: string;
@@ -34,27 +35,42 @@ const {
   title,
   formAction,
   submitButtonText,
+  formHiddenFields,
+  procedureOptions,
   contactDetails,
   mapImageSrc,
   mapImageSrcMobile,
   mapImageAlt,
+  mapEmbedUrl,
   backgroundImageSrc,
   backgroundImageSrcMobile,
-  backgroundImageAlt,
-  formHiddenFields,
-  procedureOptions
+  backgroundImageAlt
 } = Astro.props;
 ---
 
 <section id={sectionId}>
   <div class="cs-container">
     <div class="cs-right">
-      <!--Map Image-->
-      <picture class="cs-map">
-        <source media="(max-width: 600px)" srcset={mapImageSrcMobile ?? mapImageSrc} />
-        <source media="(min-width: 601px)" srcset={mapImageSrc} />
-        <img decoding="async" src={mapImageSrc} alt={mapImageAlt} width="610" height="425" aria-hidden="true" />
-      </picture>
+      <!-- ✅ Dynamic Map or Static Image -->
+      {mapEmbedUrl ? (
+        <div class="cs-map">
+          <iframe
+            src={mapEmbedUrl}
+            width="100%"
+            height="425"
+            style="border:0;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      ) : (
+        <picture class="cs-map">
+          <source media="(max-width: 600px)" srcset={mapImageSrcMobile ?? mapImageSrc} />
+          <source media="(min-width: 601px)" srcset={mapImageSrc} />
+          <img decoding="async" src={mapImageSrc} alt={mapImageAlt} width="610" height="425" aria-hidden="true" />
+        </picture>
+      )}
 
       <ul class="cs-contact-group">
         {contactDetails.map((detail) => (
@@ -77,133 +93,91 @@ const {
       <span class="cs-topper">{topper}</span>
       <h2 class="cs-title">{title}</h2>
 
-<form
-  class="cs-form"
-  id="cs-form-321"
-  name="Contact Form"
-  method="post"
-  action={formAction ?? "/lead/process"}
-  autocomplete="on"
-  novalidate
->
-  {formHiddenFields &&
-    Object.entries(formHiddenFields).map(([name, value]) => (
-      <input type="hidden" name={name} value={value as string} />
-    ))
-  }
+      <form class="cs-form" id="cs-form-321" name="Contact Form" method="post" action={formAction ?? "/lead/process"}>
+        {formHiddenFields &&
+          Object.entries(formHiddenFields).map(([name, value]) => (
+            <input type="hidden" name={name} value={value as string} />
+          ))
+        }
 
-  <label class="cs-label">
-    Full Name
-    <input
-      class="cs-input"
-      required
-      type="text"
-      id="field-39762"
-      name="FullName"
-      placeholder="Full Name"
-      autocomplete="name"
-    />
-  </label>
+        <label class="cs-label">
+          First Name
+          <input class="cs-input" required type="text" id="name-321" name="FirstName" placeholder="First Name" autocomplete="given-name" />
+        </label>
 
-  <label class="cs-label">
-    Date of Birth
-    <input
-      class="cs-input"
-      required
-      type="text"
-      id="field-42214"
-      name="Date"
-      placeholder="Date of Birth"
-      autocomplete="bday"
-      onfocus="(this.type='date')"
-      onblur="if(!this.value)this.type='text'"
-    />
-  </label>
+        <label class="cs-label">
+          Last Name
+          <input class="cs-input" required type="text" id="last-name-321" name="LastName" placeholder="Last Name" autocomplete="family-name" />
+        </label>
 
-  <label class="cs-label">
-    Phone Number
-    <input
-      class="cs-input"
-      required
-      type="tel"
-      id="field-39763"
-      name="PhoneNumber"
-      placeholder="Phone Number"
-      autocomplete="tel"
-    />
-  </label>
+        <label class="cs-label cs-email">
+          Email Address
+          <input class="cs-input" required type="email" id="email-321" name="Email" placeholder="Email Address" autocomplete="email" />
+        </label>
 
-  <label class="cs-label">
-    Email Address
-    <input
-      class="cs-input"
-      required
-      type="email"
-      id="field-39761"
-      name="Email"
-      placeholder="Email Address"
-      autocomplete="email"
-    />
-  </label>
+        <label class="cs-label cs-phone">
+          Phone Number
+          <input class="cs-input" required type="tel" id="phone-321" name="PhoneNumber" placeholder="Phone Number" autocomplete="tel" />
+        </label>
 
-  <label class="cs-label">
-    Preferred Communication Method
-    <select class="cs-input" id="field-41679" name="List">
-      <option value="">Select Preferred Method of Communication</option>
-      <option value="Text">Text Message</option>
-      <option value="Call">Phone Call</option>
-      <option value="Email">Email</option>
-    </select>
-  </label>
+        <label class="cs-label">
+          Service Interested In:
+          <input class="cs-input" required type="text" id="service-321" name="ServiceInterest" placeholder="Service Interested In" />
+        </label>
 
-  <label class="cs-label">
-    Patient Status
-    <select class="cs-input" id="field-40866" name="PatientStatusId" required>
-      <option value="">Select a Patient Status</option>
-      <option value="1">New Patient</option>
-      <option value="2">Existing Patient</option>
-      <option value="3">Other</option>
-    </select>
-  </label>
+        <label class="cs-label">
+          Requested Consultation Date
+          <input class="cs-input" required type="date" id="date-321" name="ConsultationDate" placeholder="Requested Consultation Date" />
+        </label>
 
-  <label class="cs-label">
-    Procedure
-    <select class="cs-input" id="field-41680" name="ProcedureList" required>
-  <option value="">Select a Procedure</option>
-  {(procedureOptions ?? []).map((option) => (
-    <option value={option}>{option}</option>
-  ))}
-</select>
-  </label>
+        <label class="cs-label">
+          Requested Doctor
+          <input class="cs-input" required type="text" id="doctor-321" name="RequestedDoctor" placeholder="Requested Doctor" />
+        </label>
 
-  <label class="cs-label cs-message">
-    Comment
-    <textarea
-      class="cs-input cs-textarea"
-      required
-      name="Comment"
-      id="field-39760"
-      placeholder="Write your message..."
-      autocomplete="off"
-    ></textarea>
-  </label>
+        <label class="cs-label">
+          Patient Status
+          <input class="cs-input" required type="text" id="patient-status-321" name="PatientStatus" placeholder="Patient Status" />
+        </label>
 
-  <label class="cs-label">
-    <input type="checkbox" name="Checkbox" value="true" />
-    Sign Up for Our Newsletter?
-  </label>
+        <label class="cs-label">
+          Preferred Communication Method
+          <input class="cs-input" required type="text" id="communication-method-321" name="CommunicationMethod" placeholder="Preferred Communication Method" />
+        </label>
 
-  <button class="cs-button-solid cs-submit" type="submit">{submitButtonText}</button>
-</form>
+        <label class="cs-label">
+          State
+          <input class="cs-input" required type="text" id="state-321" name="State" placeholder="State" />
+        </label>
+
+        <label class="cs-label">
+          Procedure
+          <select class="cs-input" id="procedure-321" name="ProcedureList" required>
+            <option value="">Select a Procedure</option>
+            {(procedureOptions ?? []).map((option: string) => (
+              <option value={option}>{option}</option>
+            ))}
+          </select>
+        </label>
+
+        <label class="cs-label">
+          Message
+          <textarea class="cs-input cs-textarea" required name="Message" id="message-321" placeholder="Write Message..." autocomplete="off"></textarea>
+        </label>
+
+        <button class="cs-button-solid cs-submit" type="submit">{submitButtonText}</button>
+      </form>
     </div>
   </div>
 
+  <!-- ✅ This is the section background (keep this!) -->
   <picture class="cs-background">
     <source media="(max-width: 600px)" srcset={backgroundImageSrcMobile ?? backgroundImageSrc} />
     <source media="(min-width: 601px)" srcset={backgroundImageSrc} />
     <img decoding="async" src={backgroundImageSrc} alt={backgroundImageAlt} width="275" height="132" aria-hidden="true" />
   </picture>
 </section>
+
 
                                 
 <style>
@@ -362,7 +336,6 @@ const {
         /* 32px - 48px */
         width: clamp(2rem, 4vw, 3rem);
         height: clamp(2rem, 4vw, 3rem);
-        background: url("https://csimg.nyc3.digitaloceanspaces.com/Contact-Page/pin-red.svg");
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
