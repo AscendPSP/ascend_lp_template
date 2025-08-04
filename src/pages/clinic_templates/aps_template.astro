@@ -1,0 +1,260 @@
+---
+import Navigation from "../../components/Navigation.astro";
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import About from "../../components/About.astro";
+import Testimonials from "../../components/Testimonials.astro";
+import CTA from "../../components/CTA.astro";
+import FAQ from "../../components/FAQ.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const navItems = [
+  { label: "Home", href: "/#hero-1467", active: true },
+  { label: "About", href: "/#sbs-2376" },
+  { label: "Services", href: "/#services-1977" },
+  { label: "FAQ", href: "/#faq-595" },
+  { label: "Testimonials", href: "/#reviews-864" },
+  { label: "Contact", href: "/#contact-321" },
+];
+
+interface Props {
+  pageTitle: string;
+}
+
+const { pageTitle } = Astro.props;
+---
+
+<Layout pageTitle="My Landing Page">
+  <main>
+    <Navigation
+      logoHref="/"
+      logoSrc="https://assets.doctorlogic.com/Images/Sites/A/Ascend-Aesthetica/MasterPage/1364043.svg"
+      navItems={navItems}
+      phoneHref="tel:555-987-6543"
+      phoneLabel="Call Today"
+      phoneNumber="(555) 987-6543"
+      phoneIconSrc="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/white-phone.svg"
+    />
+<Hero
+      title="Enhance Your Confidence With Advanced Plastic Surgery"
+      description="Our board-certified surgeons provide personalized cosmetic and reconstructive procedures designed to help you look and feel your best."
+      ctaHref="/contact"
+      ctaText="Call Now: (555) 987-6543"
+      ctaIconSrc="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/white-phone.svg"
+      reviewIcons={[
+        {
+          src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA7KgAjPlfSROyMKjpv-UpLsUd7z6g_gas4A&s",
+          alt: "RealSelf",
+        },
+        {
+          src: "https://static.vecteezy.com/system/resources/previews/053/986/346/large_2x/facebook-icon-logo-symbol-free-png.png",
+          alt: "Facebook",
+        },
+        {
+          src: "https://www.getmailbird.com/assets/imgs/logos/clearbit/googlemail.com.png",
+          alt: "Google",
+        },
+      ]}
+      reviewCount="+2.3k"
+      starIconSrc="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/star-single.svg"
+      ratingText="Ascend Plastic Surgery rated 4.9/5 based on 1,200 patient reviews."
+      tagText="Limited-Time Offer"
+      offerTitle="Complimentary Consultation for New Patients"
+      offerExpires="*Offer Expires August 31st"
+      offerSubtext="Get expert guidance and a personalized treatment plan at no cost."
+      backgroundImg="https://assets.doctorlogic.com/Images/Sites/A/Ascend-HeddenGunn/MasterPage/1420427.jpg"
+      backgroundImgMobile="https://assets.doctorlogic.com/Images/Sites/A/Ascend-HeddenGunn/MasterPage/1420427.jpg"
+      formAction="/lead/process"
+      formHiddenFields={{
+        SiteId: "5304",
+        FormId: "5683",
+        PageName: "landingpage",
+        PrimaryKey: "138",
+        ForeignKey: "138",
+        WebPage: "landingpage",
+        CustomerCode: "lmwtfy",
+      }}
+      procedureOptions={[
+        "Acne Scar Treatment",
+        "Tummy Tuck",
+        "Facelift",
+        "Breast Augmentation",
+        "CoolSculpting®",
+        "Laser Hair Removal",
+        "Liposuction",
+        "BOTOX®",
+        "SkinPen Microneedling"
+      ]}
+    />
+
+    <About
+      topper="Why Choose Us"
+      title="A New Standard in Aesthetic Excellence"
+      description="At Ascend Plastic Surgery, we specialize in helping you achieve your ideal appearance through safe, modern, and effective surgical solutions."
+      blocks={[
+        {
+          title: "Customized Surgical Plans",
+          description: "Every patient is unique. We take the time to understand your goals and tailor your treatment plan accordingly.",
+          listItems: [
+            {
+              iconSrc: "https://www.svgrepo.com/show/353085/dot-single.svg",
+              alt: "checkmark",
+              text: "One-on-one consultation with a board-certified surgeon."
+            },
+            {
+              iconSrc: "https://www.svgrepo.com/show/353085/dot-single.svg",
+              alt: "checkmark",
+              text: "Procedures tailored to your body, goals, and lifestyle."
+            },
+            {
+              iconSrc: "https://www.svgrepo.com/show/353085/dot-single.svg",
+              alt: "checkmark",
+              text: "Clear pre- and post-operative guidance."
+            }
+          ],
+          linkHref: "/contact",
+          linkText: "Book Consultation",
+          imageSrc: "https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/people3.jpg",
+          imageAlt: "Surgeon consulting with patient"
+        }
+      ]}
+    />
+
+<CTA
+      topper="Your Confidence, Our Priority"
+      title="Explore Our Popular Procedures"
+      description="From facelifts and tummy tucks to breast enhancement and body contouring, our team is here to help you look and feel your best."
+      imageSrc="https://assets.advancedcosmeticsurgery-sc.com/Images/Sites/A/Ascend-AdvancedCS/Aisle/30624.jpg"
+      imageAlt="Plastic surgeon with patient"
+      cardTitle="Start Your Transformation Today"
+      cardText="Take the first step toward a more confident you. Our expert team is ready to guide you through your plastic surgery journey."
+      primaryCtaHref="/contact"
+      primaryCtaText="Schedule Now"
+      phoneHref="tel:555-987-6543"
+      phoneLabel="Call Today"
+      phoneNumber="(555) 987-6543"
+      phoneIconSrc="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/white-phone.svg"
+    />
+
+    <Testimonials
+      topper="Patient Testimonials"
+      title="Real Stories. Real Results."
+      description="See what our patients are saying about their experience with Ascend Plastic Surgery."
+      testimonials={[
+        {
+          name: "Amanda Lee",
+          jobTitle: "Facelift Patient",
+          reviewText: "The team was amazing from start to finish. I’m incredibly happy with my facelift results — natural, refreshed, and exactly what I hoped for.",
+          starImgSrc: "https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fstars.svg",
+          starImgAlt: "5-star rating",
+          dateLabel: "Google Review — 06/12/2025"
+        },
+        {
+          name: "James Morgan",
+          jobTitle: "Gynecomastia Patient",
+          reviewText: "Dr. Kim gave me my confidence back. The surgery was smooth, and the recovery was easier than I expected. Highly recommend!",
+          starImgSrc: "https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fstars.svg",
+          starImgAlt: "5-star rating",
+          dateLabel: "Yelp Review — 05/30/2025"
+        }
+      ]}
+    />
+
+    <FAQ
+      imageSrc="https://assets.tlhplasticsurgery.com/Images/Sites/A/Ascend-TallahasseePlasticSurgery/Procedure/1466153.png"
+      imageSrcMobile="https://assets.tlhplasticsurgery.com/Images/Sites/A/Ascend-TallahasseePlasticSurgery/Procedure/1466153.png"
+      imageAlt="Patient consultation"
+      topper="Frequently Asked Questions"
+      title="Questions About Plastic Surgery?"
+      faqItems={[
+        {
+          question: "Do you offer financing options?",
+          answer: "Yes, we partner with leading medical lenders to offer flexible financing plans for qualified patients.",
+          isActive: true
+        },
+        {
+          question: "Is plastic surgery safe?",
+          answer: "Yes. Our board-certified surgeons follow the highest safety standards and protocols to ensure optimal outcomes."
+        },
+        {
+          question: "How long is the recovery time?",
+          answer: "Recovery time depends on the procedure, but most patients return to normal activities within 1–2 weeks."
+        }
+      ]}
+    />
+
+    <Contact
+      topper="Contact Us"
+      title="We’re Here to Support Your Journey"
+      formAction="/lead/process"
+      submitButtonText="Request a Consultation"
+      formHiddenFields={{
+        SiteId: "5304",
+        FormId: "5683",
+        PageName: "landingpage",
+        PrimaryKey: "138",
+        ForeignKey: "138",
+        WebPage: "landingpage",
+        CustomerCode: "lmwtfy"
+      }}
+      procedureOptions={[
+        "Acne Scar Treatment",
+        "Tummy Tuck",
+        "Facelift",
+        "Breast Augmentation",
+        "CoolSculpting®",
+        "Laser Hair Removal",
+        "Liposuction",
+        "BOTOX®",
+        "SkinPen Microneedling"
+      ]}
+      contactDetails={[
+        {
+          iconSrc: "https://csimg.nyc3.digitaloceanspaces.com/Contact-Page/phone-gold.svg",
+          label: "Phone",
+          lines: ["(555) 987-6543"],
+          hrefs: ["tel:555-987-6543"]
+        },
+        {
+          iconSrc: "https://csimg.nyc3.digitaloceanspaces.com/Contact-Page/pin-gold.svg",
+          label: "Address",
+          lines: ["121 Beauty Blvd, Beverly Hills\nCA 90210, USA"],
+          hrefs: [""]
+        },
+        {
+          iconSrc: "https://csimg.nyc3.digitaloceanspaces.com/Contact-Page/clock-gold.svg",
+          label: "Our Hours",
+          lines: ["Mon — Fri", "8:00 AM - 6:00 PM"]
+        }
+      ]}
+      mapImageSrc="https://csimg.nyc3.digitaloceanspaces.com/Contact-Page/map.png"
+      mapImageAlt="Map"
+      backgroundImageSrc="https://assets.advancedcosmeticsurgery-sc.com/Images/Sites/A/Ascend-AdvancedCS/Aisle/30625.jpg"
+      backgroundImageSrcMobile="https://assets.advancedcosmeticsurgery-sc.com/Images/Sites/A/Ascend-AdvancedCS/Aisle/30625.jpg"
+      backgroundImageAlt="Consultation Room"
+      mapEmbedUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19726.816816397957!2d-82.35232005678306!3d34.8449012711081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88582f02d7d5739f%3A0xfb434fc1da3d44c9!2sAdvanced%20Cosmetic%20Surgery!5e0!3m2!1sen!2sus!4v1754326014673!5m2!1sen!2sus"
+    />
+
+    <Footer
+      logoHref="/"
+      logoSrc="https://assets.doctorlogic.com/Images/Sites/A/Ascend-Aesthetica/MasterPage/1364043.svg"
+      logoAlt="Ascend Logo"
+      navItems={[
+        { label: "Home", href: "/#hero-1467" },
+        { label: "About", href: "/#sbs-2376" },
+        { label: "Services", href: "/#services-1977" },
+         { label: "FAQ", href: "/#faq-595" },
+        { label: "Testimonials", href: "/#reviews-864" },
+        { label: "Contact", href: "/#contact-321" }
+      ]}
+      copyrightText="2025"
+      agencyHref="/"
+      agencyName="Ascend Plastic Surgery"
+      privacyPolicyHref="/privacy-policy"
+      privacyPolicyLabel="Privacy Policy"
+      termsHref="/terms"
+      termsLabel="Terms of Use"
+    />
+  </main>
+</Layout>
