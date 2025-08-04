@@ -101,13 +101,37 @@ const {
         }
 
         <label class="cs-label">
-          First Name
-          <input class="cs-input" required type="text" id="name-321" name="FirstName" placeholder="First Name" autocomplete="given-name" />
+          Full Name
+          <input
+            class="cs-input"
+            required
+            type="text"
+            id="name-321"
+            name="FullName"
+            placeholder="Full Name"
+            autocomplete="given-name"
+          />
         </label>
 
         <label class="cs-label">
-          Last Name
-          <input class="cs-input" required type="text" id="last-name-321" name="LastName" placeholder="Last Name" autocomplete="family-name" />
+          Date of Birth
+          <input
+            class="cs-input"
+            required
+            type="text"
+            id="field-321"
+            name="Date"
+            placeholder="Date of Birth"
+            autocomplete="bday"
+            onfocus="(this.type='date')"
+            onblur="if(!this.value)this.type='text'"
+          />
+        </label>
+
+
+        <label class="cs-label cs-phone">
+          Phone Number
+          <input class="cs-input" required type="tel" id="phone-321" name="PhoneNumber" placeholder="Phone Number" autocomplete="tel" />
         </label>
 
         <label class="cs-label cs-email">
@@ -115,39 +139,29 @@ const {
           <input class="cs-input" required type="email" id="email-321" name="Email" placeholder="Email Address" autocomplete="email" />
         </label>
 
-        <label class="cs-label cs-phone">
-          Phone Number
-          <input class="cs-input" required type="tel" id="phone-321" name="PhoneNumber" placeholder="Phone Number" autocomplete="tel" />
-        </label>
-
         <label class="cs-label">
-          Service Interested In:
-          <input class="cs-input" required type="text" id="service-321" name="ServiceInterest" placeholder="Service Interested In" />
-        </label>
-
-        <label class="cs-label">
-          Requested Consultation Date
-          <input class="cs-input" required type="date" id="date-321" name="ConsultationDate" placeholder="Requested Consultation Date" />
-        </label>
-
-        <label class="cs-label">
-          Requested Doctor
-          <input class="cs-input" required type="text" id="doctor-321" name="RequestedDoctor" placeholder="Requested Doctor" />
+          Preferred Communication Method
+          <select class="cs-input" id="field-41679" name="List">
+            <option value="">Select Preferred Method of Communication</option>
+            <option value="Text">Text Message</option>
+            <option value="Call">Phone Call</option>
+            <option value="Email">Email</option>
+          </select>
         </label>
 
         <label class="cs-label">
           Patient Status
-          <input class="cs-input" required type="text" id="patient-status-321" name="PatientStatus" placeholder="Patient Status" />
-        </label>
-
-        <label class="cs-label">
-          Preferred Communication Method
-          <input class="cs-input" required type="text" id="communication-method-321" name="CommunicationMethod" placeholder="Preferred Communication Method" />
-        </label>
-
-        <label class="cs-label">
-          State
-          <input class="cs-input" required type="text" id="state-321" name="State" placeholder="State" />
+          <select
+            class="cs-input"
+            id="field-40866"
+            name="PatientStatusId"
+            required
+          >
+            <option value="">Select a Patient Status</option>
+            <option value="1">New Patient</option>
+            <option value="2">Existing Patient</option>
+            <option value="3">Other</option>
+          </select>
         </label>
 
         <label class="cs-label">
@@ -164,6 +178,26 @@ const {
           Message
           <textarea class="cs-input cs-textarea" required name="Message" id="message-321" placeholder="Write Message..." autocomplete="off"></textarea>
         </label>
+
+                <label class="cs-label">
+                    <input type="checkbox">
+          By submitting you agree to receive SMS and e-mails. Rates may be applied.</input>
+        </label>
+
+        <div class="form__field form__field--42744 form__field--name-HTML__1 form__field--type-7"><div class="form-markup ">
+
+<div style="display: flex; flex-flow: row;">
+  <div class="cf-turnstile" data-sitekey="0x4AAAAAABhwUQg29sNtrY3e" data-size="flexible">
+    <div>
+      <input
+        type="hidden"
+        name="cf-turnstile-response"
+        id="cf-chl-widget-d76fd_response"
+        value="0.H7VY2CVl4mwKPqPLEpS_keTQ4vpaELepUpvFs3OdsLKybefDXU0LaUJpNTwWQVJRmEsA7HDY5DRvLFdCo1NQg6ClWDfWW054NGeqNdkQAXsiDMXv0iOHrTv5EI01lXsNZcH0TbOW2Rizg4ygraYDcKGbrRLXNxxgCbzCiEeQ0UAzqi_sNt_9sCtCJ7fRbG0V60cfGgFmDXUnUKDl4b5oH2D5EuSyUWrNyy1xxsbjBZMuedZm5fRXUlUtRfvJNxhNorNRsjLmO4tMa2fNY7tu_kHNZx7KOaVkOdxm0mmV9WJlFJYWyjJGgpP4d5q3gf8HyrWFam-AetvnvnfgAXn4RVWZJPQwb7ofz1QbXD8jvOv9iQF88KwXQj0xKGHaKfMVhPMcTw6k-D8KElIsxIA2vCamoL6iQVeW7jJ7S-qPGrcu6mDXMTQ6uO28xaG9aonpkiZr1LBLwD6LG0QJ65nJ5GYG2Ty48hfv6PsA_Zw62y2S6gIuZe2M54VbztH0qfXM9-GnMlv0KjvPOqM_TQZt3rW5DG_Sw8-ty67YrNbzY08P_LJzH0D942hUqiN73de7mScwYZzhFmuH2lOKO3m01rIsOGw4Qy3maGo1t6tSl4J3EeayaaMCoHD8cmnaOeLkJtYgoNQl45_tE30SVhS56UavWAbdPa6X3iVASN4FKOteDcOS20gbreT9I53LLSFFERDV_HLTmZyxXQvQkdtR3bQE8vPOtAO_pyWavuW48MI9qfqbAyLe9ycPjgy0YQ6FXXSmPUUYsR9ohDbOyg2qpaKDPe-1f_hwqNLzc-SPmKFK26wrLZ2dOk1Yx9p5VD4S3rfnF_ZPcDH5S2y1uBvuTj1xlO2zRVtATYJ2yO6WjGlCqHFIIeY8ctO6zDt10KhFNscrJthJlWoyFGjFd_GjZkG9KSJapR8lYX7IoK4pZ0yCyZD0qbVz48drybdCrypQn48EUSrLQWd_XSV0MGb3vsoyTri6y2rBoThKCC5GDVSbgqPLXVsh0mQZ9WyiBrBY.qQqtkBDXv-MAJyUwuoI6Hw.2d07afc4065458332d48eb74a4175ae8206cd7a6e3e0e8a7fdcdd99b352d7d0e" />
+    </div>
+  </div>
+</div>
+
 
         <button class="cs-button-solid cs-submit" type="submit">{submitButtonText}</button>
       </form>
@@ -482,5 +516,10 @@ const {
 
 .cs-topper {
     color: #fff !important;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.6); /* Increase size */
+  margin-left: 0.25rem;  /* Optional spacing */
 }
 </style>

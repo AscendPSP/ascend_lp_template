@@ -22,10 +22,8 @@ interface HeroProps {
   offerSubtext: string;
 
   formAction?: string;
-  formDisclaimer: string;
   formHiddenFields?: Record<string, string>;
   procedureOptions?: string[];
-  disclaimerIconSrc: string;
 
   backgroundImg: string;
   backgroundImgMobile: string;
@@ -46,8 +44,6 @@ const {
   offerExpires,
   offerSubtext,
   formAction,
-  formDisclaimer,
-  disclaimerIconSrc,
   backgroundImg,
   backgroundImgMobile,
   formHiddenFields,
@@ -245,23 +241,17 @@ const {
         </label>
 
         <label class="cs-label">
-          <input type="checkbox" name="Checkbox" value="true" />
-          Sign Up for Our Newsletter?
+          By submitting you agree to receive SMS and e-mails. Rates may be applied.
         </label>
+
+        <div class="form__field form__field--42744 form__field--name-HTML__1 form__field--type-7"><div class="form-markup ">
+
+<div style="display: block; flex-flow: row;">
+  <div class="cf-turnstile" data-sitekey="0x4AAAAAABhwUQg29sNtrY3e" data-size="flexible"><div><input type="hidden" name="cf-turnstile-response" id="cf-chl-widget-d76fd_response" value="0.rjjovC-U-FJLL_pMJPqh4aq2pTKIBN2x0GrXLJwS1G03PAeOm3Yn4iMDXHgImLkecWdWAxewTsbSJp89qoO4RqM2pSY198ZqyeM4LQLZGCW6ErfJZUisPq-GK584FRw0ga_lSd3_NiCtpQB85RyMaqb-npp_H6606xr3IzxBRhLVzLxAPh0rfHs102t9Qdzy955JN-qM71ciOUDWtW-VXpeyKD_yi5V7frwj4RZOJ5eRYhld7DaOJqbDhiIwA--t7fO8VFSjdkYfa3HxOS_01FXOO8p_IFivFueAnUpM2Xu9VBNrIptK1qQ_a2p_B2m-_qh0HpfzHVe8J-TZfsWUOSKdov8lrq3sqtKm23HAv9vuLtbfU9xTQpFyNM0UIN_SR4vFgRIRCYO_tVmj1gCaFbTwLO4k1WMJEpQjXzSSVmOCEmeElpBXXymeDgLFQoG1TK_D8NbyvKaZcNeTBzkbrDe0enq-Kz-DT1wMlx0ZPk-R6qYYTqaLEu3ydDZqYOfHtsIac_GZnVMkyd8dXZqWOn_kcibIOXcD99SfGG5qfjrgyge9akj24Jw1QRGS-jlCsEk3Vts3qTfG8ksfScMsR0YGhMo__qprwsWniPsSnk2WgC5kilgETRlOXJGk8tb1zfYs-H9gyFHQoRP5RNT3xrnUYFgKM7IPKG-IFntfhuhY373uVaJ3q_tU_RhDrZPIevqVUyo8NXb3_728Q7fmejSmLQEgD9kEmqQMqNQBK_owu99IlctUR_i343mbE83JoR_adCSZphjwR_1zyd-tovPLuEXBOF8b8bhgUoH4iaPCF_e4J-_E3kkkLqTA_OFLOx1vOvxt_4ZvfTNSzIurzbUtgP_nnqC9spESvNUJkyAvLuXgupFgdELA4VQLTKvHyFocjWfv33tcVBYOGKuKcbhdP3l7MD7Zlr4hjfyExzzXR1wNwfc_sXCPNaUNJakxn1GGs76cce75xnEilv-uM8D-UIX3V7S0acFB-cG0LqbA4suz16FMZA4xzZcWbs59.4srosmx4XvDPwSASOjKaqQ.7a128fbeafbf8d4d4ceb85389f551d9940d50e1d1bf20b15ed0b07cb8adb21d9"></div></div>
+</div></div></div>
 
         <button class="cs-button-solid cs-submit" type="submit">Submit</button>
       </form>
-
-      <p class="cs-disclaimer">
-        <img
-          class="cs-disclaimer-icon"
-          src={disclaimerIconSrc}
-          alt="icon"
-          width="20"
-          height="20"
-        />
-        {formDisclaimer}
-      </p>
     </div>
   </div>
 
@@ -290,7 +280,7 @@ const {
     #hero-1467 {
       /* 200px - 350px top - leaving extra space for the navigation */
       /* 100px - 200px bottom */
-      padding: clamp(12.5rem, 25.95vw, 12.5em) 1rem clamp(6.25rem, 7vw, 12.5rem);
+      padding: clamp(9.5rem, 25.95vw, 12.5em) 1rem clamp(6.25rem, 7vw, 12.5rem);
       /* prevents the topper line from causing an overflow */
       position: relative;
       z-index: 1;
@@ -411,7 +401,7 @@ const {
       /* 8px - 16px */
       gap: clamp(0.5rem, 2vw, 1rem);
       position: relative;
-      z-index: -1;
+      z-index: 0;
     }
     #hero-1467 .cs-reviews-flex {
       margin-bottom: 1rem;
@@ -463,7 +453,7 @@ const {
       width: 100%;
       /* 16px - 48px left & right */
       /* 32px - 48px top & bottom */
-      padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 4vw, 3rem);
+      padding: clamp(2rem, 5vw, 3rem) clamp(1.25rem, 4vw, 3rem);
       box-sizing: border-box;
       border-radius: 1.5rem;
       border-top: 8px solid var(--primary);
@@ -478,12 +468,12 @@ const {
     #hero-1467 .cs-tag {
       font-size: 0.75rem;
       text-transform: uppercase;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 0.1em;
       line-height: 1.75rem;
       padding: 0 2rem 0 1.75rem;
       overflow: hidden;
-      color: var(--bodyTextColorWhite);
+      color: #010203;
       border-radius: 2.5rem;
       display: inline-block;
       position: absolute;
@@ -497,7 +487,7 @@ const {
       /* background color */
       content: "";
       height: 100%;
-      background: var(--secondary);
+      background: #fbc02d;
       opacity: 1;
       position: absolute;
       display: block;
@@ -511,7 +501,7 @@ const {
       content: "";
       width: 1.5625rem;
       height: 1.5625rem;
-      background-color: var(--secondary);
+      background-color: #fbc02d;
       opacity: 1;
       overflow: hidden;
       position: absolute;
@@ -590,6 +580,7 @@ const {
       box-sizing: border-box;
       transition: border-color 0.3s;
     }
+
     #hero-1467 .cs-input:hover,
     #hero-1467 select:hover {
       border-color: var(--secondary);
@@ -747,4 +738,42 @@ const {
       display: none;
     }
   }
+
+  #hero-1467::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    130deg,
+    hsl(240deg 100% 77%) 0%,
+    hsl(243deg 85% 73%) 8%,
+    hsl(246deg 74% 69%) 17%,
+    hsl(249deg 65% 65%) 25%,
+    hsl(252deg 58% 61%) 33%,
+    hsl(255deg 53% 57%) 42%,
+    hsl(258deg 48% 53%) 50%,
+    hsl(261deg 46% 49%) 58%,
+    hsl(264deg 51% 45%) 67%,
+    hsl(267deg 56% 41%) 75%,
+    hsl(271deg 63% 36%) 83%,
+    hsl(274deg 75% 31%) 92%,
+    hsl(279deg 100% 25%) 100%
+  );
+  pointer-events: none;
+}
+
+#hero-1467 .cs-background {
+  z-index: -2;
+}
+
+@media only screen and (min-width: 48rem) {
+  #hero-1467::after {
+    display: none;
+  }
+}
+
 </style>

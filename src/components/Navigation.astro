@@ -3,7 +3,6 @@
 interface NavigationItem {
   label: string;
   href: string;
-  active?: boolean;
 }
 
 interface Props {
@@ -32,7 +31,7 @@ const {
   <div class="cs-container">
     <!--Nav Logo-->
     <a href={logoHref} class="cs-logo" aria-label="back to home">
-      <img src={logoSrc} alt="logo" width="210" height="29" aria-hidden="true" decoding="async" />
+      <img src={logoSrc} alt="logo" aria-hidden="true" decoding="async" />
     </a>
 
     <!--Navigation List-->
@@ -48,15 +47,12 @@ const {
       <div class="cs-ul-wrapper">
         <ul id="cs-expanded" class="cs-ul" aria-expanded="false">
           {navItems.map((item) => (
-            <li class="cs-li">
-              <a
-                href={item.href}
-                class={`cs-li-link ${item.active ? 'cs-active' : ''}`}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
+  <li class="cs-li">
+    <a href={item.href} class="cs-li-link">
+      {item.label}
+    </a>
+  </li>
+))}
         </ul>
       </div>
     </nav>
@@ -173,7 +169,7 @@ const {
     z-index: 10;
   }
   #cs-navigation .cs-logo img {
-    width: 100%;
+    width: 65%;
     height: 100%;
     /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
     object-fit: contain;
@@ -459,7 +455,7 @@ const {
   #cs-navigation .cs-logo {
     width: 18.4%;
     max-width: 21.875rem;
-    height: 2rem;
+    height: 3rem;
     /* margin-right auto pushes everything away from it to the right */
     margin: 0 auto 0 0;
     padding: 0;
@@ -611,9 +607,6 @@ const {
   #cs-navigation .cs-li-link:hover {
     color: var(--primary);
   }
-  #cs-navigation .cs-li-link.cs-active {
-    color: var(--primary);
-  }
   #cs-navigation .cs-button-solid {
     font-size: 1rem;
     font-weight: 700;
@@ -673,6 +666,21 @@ const {
         // run the function to check the aria-expanded value
         ariaExpanded();
     });
+
+    const csNavLinks = document.querySelectorAll('#cs-navigation .cs-li-link');
+
+csNavLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    // Only close if nav is active (mobile menu open)
+    if (CSnavbarMenu.classList.contains('cs-active')) {
+      CSnavbarMenu.classList.remove('cs-active');
+      CShamburgerMenu.classList.remove('cs-active');
+      CSbody.classList.remove('cs-open');
+      // reset aria-expanded
+      document.querySelector('#cs-expanded').setAttribute('aria-expanded', 'false');
+    }
+  });
+});
 
     // checks the value of aria expanded on the cs-ul and changes it accordingly whether it is expanded or not 
     function ariaExpanded() {
